@@ -62,12 +62,12 @@ export function MovieCard({ id }) {
               }}>
             <DeleteIcon />     
           </IconButton >
-          {/* <IconButton color="primary"
+          <IconButton color="primary"
               onClick={()=> {
                 setmovies(movies.filter(movie => movie.name !== movies[id].name))
               }}>
             <EditIcon/>  
-          </IconButton > */}
+          </IconButton >
         </div>
       </CardActions>
     </Card>
