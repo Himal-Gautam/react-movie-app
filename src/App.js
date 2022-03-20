@@ -1,29 +1,40 @@
+//Essential imports
 import "./App.css";
 import * as React from "react";
 import Button from "@mui/material/Button";
-import { Switch, Route, Link } from "react-router-dom";
-import { createContext, useState } from "react";
-import { Welcome } from "./Welcome";
-import { Err404 } from "./Err404";
-import { MovieInfo } from "./MovieInfo";
-import { movie_array_database } from "./movie_array_database";
-import { Movielist } from "./Movielist";
-import { ColorBox } from "./ColorBox";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { createContext, useState, useEffect } from "react";
 
+//Importing components
+import { Welcome } from "./Components/Welcome";
+import { Err404 } from "./Components/Err404";
+import { MovieInfo } from "./Components/MovieInfo";
+import { Movielist } from "./Components/Movielist";
+import { ColorBox } from "./Components/ColorBox";
+import { FormicPractice } from "./Components/FormicPractice";
+
+//Imports for setting theme
 import IconButton from "@mui/material/IconButton";
 import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import Paper from "@mui/material/Paper";
 
+//context creation
 export const movielist_context = createContext({ state: 40 });
 export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
 });
 
 function App() {
-  const [movies, setmovies] = useState(movie_array_database());
+  const [movies, setmovies] = useState([]);
   const list = [movies, setmovies];
+
+  useEffect(() => {
+    fetch("https://62309998f113bfceed564095.mockapi.io/movies")
+      .then((data) => data.json())
+      .then((mvs) => setmovies(mvs));
+  });
 
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
@@ -43,9 +54,9 @@ function App() {
                   <Link to="/movielist">Movie List</Link>
                 </Button>
                 <Button variant="text">
-                  <Link to="/welcome">Trailers</Link>
+                  <Link to="/formic_practice">Formic_practice</Link>
                 </Button>
-                {/* <Button variant="text"><Link to="/color_box">Color Game</Link></Button> */}
+                <Button variant="text"><Link to="/color_box">Color Game</Link></Button>
               </div>
               <IconButton
                 sx={{ ml: 1 }}
@@ -65,11 +76,13 @@ function App() {
         </div>
 
         <div className="content">
-          <Paper elevation={24}>
+          <Paper elevation={24} sx={{borderRadius:"8px", minHeight:"100vh"}}>
             <Switch>
-              {/* Each route is case, eg. - case '/about': */}
+              <Route exact path="/">
+                <Redirect to="/welcome" />
+              </Route>
+
               <Route path="/movielist">
-                {/* Match url display the below component */}
                 <Movielist />
               </Route>
 
@@ -77,12 +90,20 @@ function App() {
                 <Welcome />
               </Route>
 
-              {/* <Route path="/color_box">
-              <ColorBox />
-            </Route> */}
+              <Route path="/color_box">
+               <ColorBox />
+               </Route>
 
               <Route path="/movies/:id">
                 <MovieInfo />
+              </Route>
+
+              {/* <Route path="/movies/edit/:id">
+                <EditMovie />
+              </Route> */}
+
+              <Route path="/formic_practice">
+                <FormicPractice />
               </Route>
 
               <Route path="**">

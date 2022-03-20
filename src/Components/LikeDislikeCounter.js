@@ -1,11 +1,15 @@
-import Badge from '@mui/material/Badge';
-import IconButton from '@mui/material/IconButton';
-import * as React from 'react';
-import { useState } from "react";
+import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
+import * as React from "react";
+import { useState, useEffect } from "react";
 
 export function LikeDislikeCounter() {
   const [like, setlike] = useState(0);
   const [dislike, setdislike] = useState(0);
+
+  useEffect(() => {
+    console.log("The like value updated", like);
+  });
 
   return (
     <div className="like-dislike">
@@ -17,7 +21,9 @@ export function LikeDislikeCounter() {
         size="small"
         aria-label="add to shopping cart"
       >
-        <Badge badgeContent={like} color="primary">👍</Badge>
+        <Badge badgeContent={like} color="primary">
+          👍
+        </Badge>
       </IconButton>
       <IconButton
         onClick={() => {
@@ -26,7 +32,9 @@ export function LikeDislikeCounter() {
         color="primary"
         size="small"
       >
-        <Badge badgeContent={dislike} color="error">👎</Badge>
+        <Badge badgeContent={dislike} color="error">
+          👎
+        </Badge>
       </IconButton>
     </div>
   );

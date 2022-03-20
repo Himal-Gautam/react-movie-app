@@ -1,26 +1,30 @@
 import * as React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import Rating from "@mui/material/Rating";
-import { movielist_context } from "./App";
+import { movielist_context } from "../App";
 import { useContext } from "react";
+import { Button } from "@mui/material";
+import { ArrowBackIos } from "@mui/icons-material";
 
 export function MovieInfo() {
   const { id } = useParams();
+  const history = useHistory();
 
   const [movies, setmovies] = useContext(movielist_context);
+  let movie = movies.filter((movie) => movie.id === id);
 
   return (
     <div className="movie-detail">
       <iframe
         width="100%"
         height="500"
-        src={movies[id].trailer}
-        title="Artemis Fowl Trailer"
+        src={movie[0].trailer}
+        title="Trailer"
         allowfullscreen="true"
       ></iframe>
       <div className="movie-detail-container">
         <div className="name-likes">
-          <h2>{movies[id].name}</h2>
+          <h2>{movie[0].name}</h2>
           <Rating
             className="movie-rate"
             name="read-only"
@@ -29,7 +33,14 @@ export function MovieInfo() {
             readOnly
           />
         </div>
-        <p>{movies[id].summary}</p>
+        <p>{movie[0].summary}</p>
+        <Button
+          onClick={() => history.goBack()}
+          variant="outlined"
+          startIcon={<ArrowBackIos />}
+        >
+          BACK
+        </Button>
       </div>
     </div>
   );
