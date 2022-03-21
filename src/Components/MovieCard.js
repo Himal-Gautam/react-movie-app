@@ -16,21 +16,25 @@ import { useHistory } from "react-router-dom";
 import CardActions from "@mui/material/CardActions";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { movielist_context } from "../App";
+import { movielist_context } from "./Movielist";
+import { API } from "../global.js"
+import { FormDialog } from "./FormDialog";
 
 export function MovieCard({ movie }) {
   const [movies, setmovies] = useContext(movielist_context);
   const [checked, setChecked] = useState(false);
+  const [open, setopen] = useState(false);
+
   const history = useHistory();
 
   const deleteMovie = async (id) => {
-    await fetch(`https://62309998f113bfceed564095.mockapi.io/movies/${id}`, {
+    await fetch(`${API}/movies/${id}`, {
       method: "DELETE",
     })
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
 
-    fetch("https://62309998f113bfceed564095.mockapi.io/movies")
+    fetch(`${API}/movies`)
       .then((data) => data.json())
       .then((mvs) => setmovies(mvs));
   };
@@ -93,12 +97,13 @@ export function MovieCard({ movie }) {
           </IconButton>
           <IconButton
             color="primary"
-            onClick={() => history.push("/movies/edit/" + movie.id)}
+            onClick={() => setopen(true)}
           >
             <EditIcon />
           </IconButton>
         </div>
       </CardActions>
+      <FormDialog open={open} setopen={setopen} type="edit" id={movie.id}/>
     </Card>
   );
 }

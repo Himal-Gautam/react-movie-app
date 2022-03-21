@@ -21,26 +21,18 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import Paper from "@mui/material/Paper";
 
 //context creation
-export const movielist_context = createContext({ state: 40 });
+
 export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
 });
 
 function App() {
-  const [movies, setmovies] = useState([]);
-  const list = [movies, setmovies];
 
-  useEffect(() => {
-    fetch("https://62309998f113bfceed564095.mockapi.io/movies")
-      .then((data) => data.json())
-      .then((mvs) => setmovies(mvs));
-  });
 
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
 
   return (
-    <movielist_context.Provider value={list}>
       <div className="App">
         <div className="header">
           <Paper elevation={0}>
@@ -113,7 +105,6 @@ function App() {
           </Paper>
         </div>
       </div>
-    </movielist_context.Provider>
   );
 }
 

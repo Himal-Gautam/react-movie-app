@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useParams, useHistory } from "react-router-dom";
 import Rating from "@mui/material/Rating";
-import { movielist_context } from "../App";
+import { movielist_context } from "./Movielist";
 import { useContext } from "react";
 import { Button } from "@mui/material";
 import { ArrowBackIos } from "@mui/icons-material";
