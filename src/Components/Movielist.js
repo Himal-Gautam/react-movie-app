@@ -9,6 +9,7 @@ import { API } from "../global.js"
 export const movielist_context = createContext({ state: 40 });
 
 export function Movielist() {
+  
   const [movies, setmovies] = useState([]);
   const list = [movies, setmovies];
 
@@ -19,7 +20,7 @@ export function Movielist() {
   });
 
   const [open, setopen] = useState(false);
-
+  console.log(movies)
   return (
     <movielist_context.Provider value={list}>
     <div>

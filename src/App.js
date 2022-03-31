@@ -45,9 +45,9 @@ function App() {
                 <Button variant="text">
                   <Link to="/movielist">Movie List</Link>
                 </Button>
-                <Button variant="text">
+                {/* <Button variant="text">
                   <Link to="/formic_practice">Formic_practice</Link>
-                </Button>
+                </Button> */}
                 <Button variant="text"><Link to="/color_box">Color Game</Link></Button>
               </div>
               <IconButton
