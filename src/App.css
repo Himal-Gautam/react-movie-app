@@ -1,0 +1,137 @@
+
+
+.App {
+  width: 100%;
+}
+
+.MovieList {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  /* background-color:black; */
+}
+
+.movie-rate{
+  text-align: left;
+}
+
+.movie-summary {
+  margin:0px;
+  text-align: justify;
+}
+
+h5{
+  margin: 0px;
+}
+
+.MovieAddForm {
+  justify-content: space-evenly;
+  text-align: center;
+  width: 100%;
+}
+
+.MovieAddForm * {
+  margin: 3px;
+}
+
+#addmovie {
+  margin: 5px;
+}
+
+.input-container {
+  justify-content: left;
+}
+
+.header{
+}
+
+.nav{
+  text-align: center;
+  /* color: white; */
+  /* background-color: black; */
+}
+
+
+h1{
+  text-align: center;
+  /* color: white;
+  background-color: black; */
+  margin:0px;
+  height:8vh;
+  padding-top: 2vh;
+}
+
+hr{
+  /* color: white;
+  background-color: black; */
+  margin:0px;
+}
+
+
+h3{
+  margin: 0px;
+}
+
+.name-likes{
+    display:flex;
+    justify-content: space-between;
+    align-items: center
+  }
+
+.color_container{
+  text-align: center;
+  padding-top:10px;
+}  
+
+.desc{
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+}
+
+.add-collapse{
+  /* float:right; */
+  /* position: fixed; */
+  /* position: -webkit-sticky; */
+  position: fixed;
+  /* bottom: 0; */
+}
+
+.welcome{
+  /* background-color:black;
+  color:white; */
+  justify-content: space-evenly;
+  height:54vh;
+  text-align: center;
+  padding-top:30vh;
+}
+
+.nav{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-bottom:1vh;
+  justify-content: center;
+}
+
+.err{
+  /* background-color:black;
+  color:white; */
+  justify-content: space-evenly;
+  height:54vh;
+  text-align: center;
+  padding-top:30vh;
+}
+
+.movie-detail-container{
+  margin:auto;
+  width:50%;
+
+}
+
+.nav_bar{
+  display:flex;
+  justify-content: space-between;
+}
